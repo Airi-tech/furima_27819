@@ -19,18 +19,6 @@
 ### Association
 - has_many :items
 
-
-## credit_cardsテーブル
-|Column|Type|Options|
-|------|----|-------|
-|code_number|integer|null: false, unique: true|
-|exp_month|integer|null: false|
-|exp_year|integer|null: false|
-|cvc|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
-
 ## destinationsテーブル
 |Column|Type|Options|
 |------|----|-------|
