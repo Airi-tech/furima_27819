@@ -14,6 +14,7 @@
 ### Association
 - has_many :items
 - has_many :comments
+- has_many :orders
 
 ## destinationsテーブル
 |Column|Type|Options|
@@ -45,6 +46,7 @@
 ### Association
 - belongs_to :user
 - has_many :comments
+- has_one :order
 - has_one :destination
 - belongs_to_active_hash :category
 - belongs_to_active_hash :sales_status
@@ -52,12 +54,22 @@
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :scheduled_delivery
 
+
 ## commentsテーブル
 |Column|Type|Options|
 |------|----|-------|
 |comment|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
+
+## ordersテーブル
+|Column|Type|Options|
+|------|----|-------|
+|item_id|references|null: false, foreign_key: true|
+|user_id|references|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
 - belongs_to :item
