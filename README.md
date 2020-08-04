@@ -27,7 +27,7 @@
 |phone_number|string|null: false, unique: true|
 |user_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user
+- belongs_to :item
 
 ## itemsテーブル
 |Column|Type|Options|
