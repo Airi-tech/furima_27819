@@ -26,7 +26,7 @@
 |addresses|string|null: false|
 |building|string|
 |phone_number|string|null: false, unique: true|
-|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
 - belongs_to_active_hash :prefecture
