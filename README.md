@@ -15,6 +15,7 @@
 |birth_date|date|null: false|
 ### Association
 - has_many :items
+- has_many :comments
 
 ## destinationsテーブル
 |Column|Type|Options|
@@ -45,6 +46,7 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :user
+- has_many :comments
 - has_one :destination
 - belongs_to_active_hash :category
 - belongs_to_active_hash :sales_status
