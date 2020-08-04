@@ -20,7 +20,7 @@
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null: false|
-|prefecture|string|null: false|
+|prefecture_id|integer|null: false, foreign_key: true|
 |city|string|null: false|
 |addresses|string|null: false|
 |building|string|
@@ -28,6 +28,7 @@
 |user_id|integer|null: false, foreign_key: true|
 ### Association
 - belongs_to :item
+- belongs_to_active_hash :prefecture
 
 ## itemsテーブル
 |Column|Type|Options|
