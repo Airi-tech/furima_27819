@@ -6,9 +6,6 @@
 |nickname|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
-- has_one :credit_card
-- has_one :destination
-
 |last_name|string|null: false|
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
