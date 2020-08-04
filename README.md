@@ -51,3 +51,13 @@
 - belongs_to_active_hash :shipping_fee_status
 - belongs_to_active_hash :prefecture
 - belongs_to_active_hash :scheduled_delivery
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|comment|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+### Association
+- belongs_to :user
+- belongs_to :item
