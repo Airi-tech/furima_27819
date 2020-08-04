@@ -6,15 +6,9 @@
 |nickname|string|null: false|
 |email|string|null: false, unique: true|
 |password|string|null: false|
-### Association
-- has_many :items
-- has_one :profile
 - has_one :credit_card
 - has_one :destination
 
-## profilesテーブル
-|Column|Type|Options|
-|------|----|-------|
 |last_name|string|null: false|
 |first_name|string|null: false|
 |last_name_kana|string|null: false|
@@ -22,9 +16,9 @@
 |birth_year|date|null: false|
 |birth_month|date|null: false|
 |birth_date|date|null: false|
-|user_id|integer|null: false, foreign_key: true|
 ### Association
-- belongs_to :user
+- has_many :items
+
 
 ## credit_cardsテーブル
 |Column|Type|Options|
