@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-      @item = Item.new
+    @item = Item.new
   end
 
   def create
@@ -17,8 +17,9 @@ class ItemsController < ApplicationController
   end
 
   private
+
   def item_params
-    params.require(:item).permit(:image, :name, :info, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id:current_user.id)
+    params.require(:item).permit(:image, :name, :info, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id: current_user.id)
   end
 
   def set_login
@@ -26,5 +27,5 @@ class ItemsController < ApplicationController
       flash[:alert] = 'You need to sign in or sign up before continuing.'
       redirect_to '/users/sign_in'
     end
-  end  
+  end
 end
