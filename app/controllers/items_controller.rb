@@ -1,10 +1,12 @@
 class ItemsController < ApplicationController
+  before_action :set_login, only: [:new]
   def index
   end
 
   def new
-    if user_signed_in?
-      @item=Item.new
+      @item = Item.new
+  end
+
   def create
     @item = Item.new(item_params)
     if @item.save
@@ -18,4 +20,11 @@ class ItemsController < ApplicationController
   def item_params
     params.require(:item).permit(:image, :name, :info, :category_id, :sales_status_id, :shipping_fee_status_id, :prefecture_id, :scheduled_delivery_id, :price).merge(user_id:current_user.id)
   end
+
+  def set_login
+    unless user_signed_in?
+      flash[:alert] = 'You need to sign in or sign up before continuing.'
+      redirect_to '/users/sign_in'
+    end
+  end  
 end
