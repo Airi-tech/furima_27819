@@ -10,5 +10,6 @@ class Item < ApplicationRecord
   has_many :comments
   has_one :order
   has_one :destination
+  has_one_attached :image
 
 end
