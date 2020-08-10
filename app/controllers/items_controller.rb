@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
   before_action :set_login, only: [:new]
 
   def index
-    @items = Item.all.order(id: "DESC")
+    @items = Item.all.order(id: 'DESC')
   end
 
   def new
