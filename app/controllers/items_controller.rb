@@ -46,9 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def owner?
-    if @item.user != current_user
-      redirect_to items_path
-    end
+    redirect_to items_path if @item.user != current_user
   end
 
   def set_login
