@@ -1,10 +1,10 @@
 $('#price').change(function(){
-  var p = $("#price").val();
-  var pri = parseInt(p);
-  var tax = Math.trunc(pri * 0.1);
-  var pro = pri - tax;
+  let p = $("#price").val();
+  let pri = parseInt(p);
+  let tax = Math.trunc(pri * 0.1);
+  let pro = pri - tax;
 
-  var pattern =	/^[1-9][0-9]*$/;
+  let pattern =	/^[1-9][0-9]*$/;
   if (pattern.test(p)){
     taxx = tax.toLocaleString()
     prox = pro.toLocaleString()
