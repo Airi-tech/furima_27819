@@ -1,7 +1,7 @@
 class ItemOrder
 
   include ActiveModel::Model
-  attr_accessor :price, :token, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number,  :item_id, :user_id
+  attr_accessor :price, :token, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :stock, :item_id, :user_id
 
   POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
   PHONE_NUMBER_REGEX = /\A\d{11}\z/
@@ -17,6 +17,8 @@ class ItemOrder
   end
   
   def save
+    @item = Item.find(item_id)
+    @item.update(stock: 0)
     Order.create(user_id: user_id, item_id: item_id)
     Address.create(postal_code: postal_code, prefecture_id: prefecture_id, city: city, addresses: addresses, building: building, phone_number: phone_number, item_id: item_id)
   end

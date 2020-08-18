@@ -2,6 +2,7 @@ class OrdersController < ApplicationController
   before_action :set_item, only: [:index, :create]
   before_action :move_to_login, only: [:index, :create]
   before_action :move_to_root, only: [:index, :create]
+  before_action :sold_out, only: [:index, :create]
 
   def index
   end
@@ -20,7 +21,7 @@ class OrdersController < ApplicationController
   private
 
   def order_params
-    params.permit(:price, :token, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number,:item_id).merge(user_id: current_user.id)
+    params.permit(:price, :token, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :stock, :item_id).merge(user_id: current_user.id)
   end
 
   def set_item
@@ -37,6 +38,12 @@ class OrdersController < ApplicationController
   def move_to_root
     @item = Item.find(params[:item_id])
     if user_signed_in? && @item.user_id == current_user.id
+      redirect_to root_path
+    end
+  end
+
+  def sold_out
+    if @item.stock == 0
       redirect_to root_path
     end
   end
