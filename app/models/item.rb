@@ -9,7 +9,7 @@ class Item < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_one :order
-  has_one :destination
+  has_one :address
   has_one_attached :image
 
   with_options presence: true do

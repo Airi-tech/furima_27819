@@ -16,7 +16,7 @@
 - has_many :comments
 - has_many :orders
 
-## destinationsテーブル
+## addressesテーブル
 |Column|Type|Options|
 |------|----|-------|
 |postal_code|string|null: false|
@@ -47,7 +47,7 @@
 - belongs_to :user
 - has_many :comments
 - has_one :order
-- has_one :destination
+- has_one :address
 - belongs_to_active_hash :category
 - belongs_to_active_hash :sales_status
 - belongs_to_active_hash :shipping_fee_status
