@@ -37,23 +37,19 @@ class OrdersController < ApplicationController
 
   def move_to_root
     @item = Item.find(params[:item_id])
-    if user_signed_in? && @item.user_id == current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if user_signed_in? && @item.user_id == current_user.id
   end
 
   def sold_out
-    if @item.stock == 0
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.stock == 0
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: @item_order.token,
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 end

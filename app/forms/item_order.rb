@@ -1,10 +1,9 @@
 class ItemOrder
-
   include ActiveModel::Model
   attr_accessor :price, :token, :postal_code, :prefecture_id, :city, :addresses, :building, :phone_number, :stock, :item_id, :user_id
 
-  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/
-  PHONE_NUMBER_REGEX = /\A\d{11}\z/
+  POSTAL_CODE_REGEX = /\A\d{3}[-]\d{4}\z/.freeze
+  PHONE_NUMBER_REGEX = /\A\d{11}\z/.freeze
 
   with_options presence: true do
     validates :token
@@ -15,7 +14,7 @@ class ItemOrder
     validates :phone_number, format: { with: PHONE_NUMBER_REGEX }
     validates :item_id
   end
-  
+
   def save
     Item.update(stock: 0)
     Order.create(user_id: user_id, item_id: item_id)
