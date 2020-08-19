@@ -5,6 +5,7 @@ class OrdersController < ApplicationController
   before_action :sold_out, only: [:index, :create]
 
   def index
+    @item_order = ItemOrder.new
   end
 
   def create
